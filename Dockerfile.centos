@@ -51,8 +51,7 @@ RUN if ! yum info jq ; then yum -y install epel-release ; fi && \
     sed -i -e 's/CONFIG_RTE_KNI_KMOD=y/CONFIG_RTE_KNI_KMOD=n/g' config/common_linuxapp && \
     sed -i -e 's/CONFIG_RTE_MACHINE="native"/CONFIG_RTE_MACHINE="snb"/g' config/defconfig_x86_64-native-linuxapp-gcc && \
     make EXTRA_CFLAGS="-O3 -g" ARCH=x86_64 O=$DPDK_BUILD_DIR config T=x86_64-native-linuxapp-gcc && \
-    make EXTRA_CFLAGS="-O3 -g" ARCH=x86_64 O=$DPDK_BUILD_DIR && \
-    cd $HOME && rm -rf $HOME/dpdk-src
+    make EXTRA_CFLAGS="-O3 -g" ARCH=x86_64 O=$DPDK_BUILD_DIR
 
 ADD entrypoint.sh /
 
